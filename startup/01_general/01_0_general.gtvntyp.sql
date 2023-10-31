@@ -1,0 +1,43 @@
+CREATE TABLE GENERAL.GTVNTYP
+(
+    GTVNTYP_CODE          VARCHAR2(4 char)  NOT NULL
+        CONSTRAINT PK_GTVNTYP
+            PRIMARY KEY,
+    GTVNTYP_DESC          VARCHAR2(30 char) NOT NULL,
+    GTVNTYP_ACTIVITY_DATE DATE              NOT NULL,
+    GTVNTYP_SURROGATE_ID  NUMBER(19)        NOT NULL
+        CONSTRAINT UK_GTVNTYP_SURROGATE_ID
+            UNIQUE,
+    GTVNTYP_VERSION       NUMBER(19)        NOT NULL,
+    GTVNTYP_USER_ID       VARCHAR2(30 char),
+    GTVNTYP_DATA_ORIGIN   VARCHAR2(30 char),
+    GTVNTYP_VPDI_CODE     VARCHAR2(6 char)
+)
+/
+
+COMMENT ON TABLE GENERAL.GTVNTYP IS 'This table defines the Banner name type codes.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_CODE IS 'NAME TYPE CODE: The code associated with a type of name.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_DESC IS 'DESCRIPTION: The description of the name type code.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_ACTIVITY_DATE IS 'ACTIVITY DATE: The date that this record was created or last updated.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_SURROGATE_ID IS 'SURROGATE ID: Immutable unique key'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_VERSION IS 'VERSION: Optimistic lock token.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_USER_ID IS 'USER ID: The user ID of the person who inserted or last updated this record.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_DATA_ORIGIN IS 'DATA ORIGIN: Source system that created or updated the data.'
+/
+
+COMMENT ON COLUMN GENERAL.GTVNTYP.GTVNTYP_VPDI_CODE IS 'VPDI CODE: Multi-entity processing code.'
+/

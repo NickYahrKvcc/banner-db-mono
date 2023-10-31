@@ -1,0 +1,3 @@
+-- This table has 45k+ rows. These inserts aren't a copy from prod, just the records
+-- that will meet the validation requirements for other tables
+INSERT INTO SATURN.STVSBGI(STVSBGI_CODE, STVSBGI_TYPE_IND, STVSBGI_SRCE_IND, STVSBGI_DESC, STVSBGI_ACTIVITY_DATE, STVSBGI_ADMR_CODE, STVSBGI_EDI_CAPABLE, STVSBGI_FICE, STVSBGI_VR_MSG_NO, STVSBGI_DISP_WEB_IND, STVSBGI_SURROGATE_ID, STVSBGI_VERSION, STVSBGI_USER_ID, STVSBGI_DATA_ORIGIN, STVSBGI_VPDI_CODE) VALUES ('F00005', 'S', 'Y', 'Financial Aid Tape Load', TO_DATE('1994-09-26', 'YYYY-MM-DD HH24:MI:SS'), null, null, 'F00005', null, null, 420, 1, null, null, null);

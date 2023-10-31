@@ -1,0 +1,45 @@
+CREATE TABLE TAISMGR.TTVTAXT
+(
+    TTVTAXT_CODE          VARCHAR2(2 char)  NOT NULL
+        CONSTRAINT PK_TTVTAXT
+            PRIMARY KEY,
+    TTVTAXT_DESC          VARCHAR2(30 char) NOT NULL,
+    TTVTAXT_ACTIVITY_DATE DATE              NOT NULL,
+    TTVTAXT_TAX_IND       VARCHAR2(1 char),
+    TTVTAXT_SURROGATE_ID  NUMBER(19),
+    TTVTAXT_VERSION       NUMBER(19),
+    TTVTAXT_USER_ID       VARCHAR2(30 char),
+    TTVTAXT_DATA_ORIGIN   VARCHAR2(30 char),
+    TTVTAXT_VPDI_CODE     VARCHAR2(6 char)
+)
+/
+
+COMMENT ON TABLE TAISMGR.TTVTAXT IS 'Tax Code Validation Table'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_CODE IS 'Tax Type Code.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_DESC IS 'Description of the Tax Type Code.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_ACTIVITY_DATE IS 'This field identifies the most recent date a record was created or updated.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_TAX_IND IS 'Indicates whether the Tax Type Code is eligible for inclusion in the T2202A tax receipts.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_SURROGATE_ID IS 'SURROGATE ID: Immutable unique key'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_VERSION IS 'VERSION: Optimistic lock token.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_USER_ID IS 'USER ID: The user ID of the person who inserted or last updated this record.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_DATA_ORIGIN IS 'DATA ORIGIN: Source system that created or updated the data.'
+/
+
+COMMENT ON COLUMN TAISMGR.TTVTAXT.TTVTAXT_VPDI_CODE IS 'VPDI CODE: Multi-entity processing code.'
+/

@@ -1,0 +1,78 @@
+GRANT REFERENCES ON SATURN.STVSBGI TO FAISMGR
+/
+
+CREATE TABLE FAISMGR.RTVINFC
+(
+    RTVINFC_CODE           VARCHAR2(7 char)  NOT NULL
+        CONSTRAINT PK_RTVINFC
+            PRIMARY KEY,
+    RTVINFC_DESC           VARCHAR2(30 char) NOT NULL,
+    RTVINFC_ACTIVITY_DATE  DATE,
+    RTVINFC_CTYP_CODE      VARCHAR2(3 char),
+    RTVINFC_SBGI_CODE      VARCHAR2(6 char)
+        CONSTRAINT FK1_RTVINFC_INV_STVSBGI_CODE
+            REFERENCES SATURN.STVSBGI,
+    RTVINFC_TREQ_CODE      VARCHAR2(6 char)
+        CONSTRAINT FK1_RTVINFC_INV_RTVTREQ_CODE
+            REFERENCES FAISMGR.RTVTREQ,
+    RTVINFC_TRST_CODE      VARCHAR2(1 char)
+        CONSTRAINT FK1_RTVINFC_INV_RTVTRST_CODE
+            REFERENCES FAISMGR.RTVTRST,
+    RTVINFC_SYSTEM_REQ_IND VARCHAR2(1 char),
+    RTVINFC_TREQ_CODE_SUPP VARCHAR2(6 char)
+        CONSTRAINT FK2_RTVINFC_INV_RTVTREQ_CODE
+            REFERENCES FAISMGR.RTVTREQ,
+    RTVINFC_USER_ID        VARCHAR2(30 char),
+    RTVINFC_SURROGATE_ID   NUMBER(19)        NOT NULL
+        CONSTRAINT UK_RTVINFC_SURROGATE_ID
+            UNIQUE,
+    RTVINFC_VERSION        NUMBER(19)        NOT NULL,
+    RTVINFC_DATA_ORIGIN    VARCHAR2(30 char),
+    RTVINFC_VPDI_CODE      VARCHAR2(6 char)
+)
+/
+
+COMMENT ON TABLE FAISMGR.RTVINFC IS 'Source Code Validation Table'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_CODE IS 'INTERFACE CODE: The code identifying the source of the data.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_DESC IS 'INTERFACE CODE DESCRIPTION: The description of the interface code.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_ACTIVITY_DATE IS 'ACTIVITY DATE: The date that information in this record was entered or last updated.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_CTYP_CODE IS 'CONTACT TYPE CODE: Recruiting contact type code.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_SBGI_CODE IS 'SOURCE/BACKGROUND INSTITUTION CODE: A code to identify the source of the recruitment contact.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_TREQ_CODE IS 'TRACKING REQUIREMENT CODE: The tracking requirement code to be posted to the student''s tracking record when a need analysis application is loaded.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_TRST_CODE IS 'TRACKING REQUIREMENT STATUS CODE: The status code to be posted to the student''s tracking record for the corresponding requirement code.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_SYSTEM_REQ_IND IS 'SYSTEM REQUIRED INDICATOR: Y/N indicator.  A (Y) in this field indicates that this is required data that was delivered by SCT and should not be removed or changed.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_TREQ_CODE_SUPP IS 'SUPPLEMENTAL TRACKING REQUIREMENT CODE: Additional tracking requirement code to be posted to the student''s tracking record when a record is loaded for this data source.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_USER_ID IS 'USER ID: User ID of the User who created or last updated the record.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_SURROGATE_ID IS 'SURROGATE ID: Immutable unique key'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_VERSION IS 'VERSION: Optimistic lock token.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_DATA_ORIGIN IS 'DATA ORIGIN: Source system that created or updated the data.'
+/
+
+COMMENT ON COLUMN FAISMGR.RTVINFC.RTVINFC_VPDI_CODE IS 'VPDI CODE: Multi-entity processing code.'
+/

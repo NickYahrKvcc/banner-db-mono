@@ -1,0 +1,9 @@
+services:
+  db:
+    image: kalamazoovalley/banner-db:latest
+    ports:
+      - 1521:1521
+      - 5500:5500
+    environment:
+      - ORACLE_PWD=mysecretpassword
+      - ORACLE_CHARACTERSET=AL32UTF8
